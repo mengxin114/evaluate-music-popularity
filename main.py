@@ -1,6 +1,7 @@
 from src.data_preprocessing import load_and_preprocess
 from src.model_training import train_model
 from src.model_evaluation import evaluate_model
+from src.feature_analysis import analyze_feature_importance  # 新增导入
 
 
 def main():
@@ -15,6 +16,9 @@ def main():
     report, roc_auc = evaluate_model(model_path, X_test, y_test)
     print(f"\nClassification Report:\n{report}")
     print(f"\nROC AUC Score: {roc_auc:.4f}")
+
+    # 4. 特征重要性分析
+    analyze_feature_importance(model_path, X_train, y_train)  # 新增调用
 
 
 if __name__ == "__main__":
